@@ -13,7 +13,7 @@ const sendNewItemsToWebhook = async () => {
     const currentUnixTime = Math.floor(Date.now() / 1000);
     const newItems = feed.items.filter((item) => {
       const pubDateUnixTime = Math.floor(new Date(item.pubDate).getTime() / 1000);
-      return currentUnixTime - pubDateUnixTime <= 900;
+      return currentUnixTime - pubDateUnixTime <= 3600;
     });
     newItems.forEach((item) => {
       console.log("Item:", item);
@@ -24,7 +24,7 @@ const sendNewItemsToWebhook = async () => {
   }
 };
 
-module.exports.handler = schedule('15 * * * *', async (event) => {
+module.exports.handler = schedule('6 * * * *', async (event) => {
   await sendNewItemsToWebhook();
   console.log('Webhook sent!');
   const eventBody = JSON.parse(event.body)
