@@ -16,6 +16,7 @@ const sendNewItemsToWebhook = async () => {
       return currentUnixTime - pubDateUnixTime <= 900;
     });
     newItems.forEach((item) => {
+      console.log("Item:", item);
       axios.post(WEBHOOK_URL, { item }, { data: { item } });
     });
   } catch (error) {
