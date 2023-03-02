@@ -1,3 +1,4 @@
+const { schedule } = require('@netlify/functions')
 const Parser = require('rss-parser');
 const axios = require('axios');
 
@@ -23,11 +24,13 @@ const sendNewItemsToWebhook = async () => {
   }
 };
 
-exports.handler = async (event, context) => {
+module.exports.handler = schedule('* * * * *', async (event) => {
   await sendNewItemsToWebhook();
   console.log('Webhook sent!');
+  const eventBody = JSON.parse(event.body)
+  console.log(`Next function run at ${eventBody.next_run}.`)
+
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'Webhook sent!' }),
-  };
-};
+  }
+})
