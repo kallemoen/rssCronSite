@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <h1 className="text-4xl font-bold">
           Welcome to{' '}
           <a className="text-blue-600" href="https://replit.com/@ErikoXDev/Nextjs-TailwindCSS?v=1">
-            Next.js + TailwindCSS!
+            Next.js + TailwindCSS! This is a site
           </a>
         </h1>
 

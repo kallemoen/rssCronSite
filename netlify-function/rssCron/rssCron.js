@@ -24,6 +24,8 @@ const sendNewItemsToWebhook = async () => {
   }
 };
 
-const job = new CronJob('*/15 * * * *', sendNewItemsToWebhook);
+const job = new CronJob('*/1 * * * *', sendNewItemsToWebhook);
+
+console.log("Initialized, will render every 1 min from", now())
 
 job.start();
