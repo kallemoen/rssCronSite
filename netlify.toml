@@ -1,6 +1,6 @@
 [build]
   functions = "netlify-function"
 
-[[functions]]
+[functions]
   path = "cronjob"
   handler = "rssCron.handler"
