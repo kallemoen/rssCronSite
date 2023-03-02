@@ -24,7 +24,7 @@ const sendNewItemsToWebhook = async () => {
   }
 };
 
-module.exports.handler = schedule('12 * * * *', async (event) => {
+module.exports.handler = schedule('* * * * *', async (event) => {
   await sendNewItemsToWebhook();
   console.log('Webhook sent!');
   const eventBody = JSON.parse(event.body)
